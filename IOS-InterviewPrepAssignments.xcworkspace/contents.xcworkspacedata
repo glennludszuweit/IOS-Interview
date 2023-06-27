@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Challenge-Views/Challenge-Views.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Combine-URLSession/Combine-URLSession.xcodeproj">
    </FileRef>
 </Workspace>
