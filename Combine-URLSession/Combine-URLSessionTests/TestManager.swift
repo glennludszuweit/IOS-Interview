@@ -18,8 +18,8 @@ class TestNetworkManager: NetworkProtocol {
                     .eraseToAnyPublisher()
             }
             let data = try Data(contentsOf: path)
-            let planetList = try JSONDecoder().decode(T.self, from: data)
-            return Just(planetList)
+            let products = try JSONDecoder().decode(T.self, from: data)
+            return Just(products)
                 .setFailureType(to: Error.self)
                 .eraseToAnyPublisher()
         } catch {
