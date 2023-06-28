@@ -11,7 +11,7 @@ import SwiftUI
 struct Challenge_ViewsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(SwapViewModel())
         }
     }
 }
