@@ -4,7 +4,7 @@
 ## 2. What is use of Setup and tear down method?
 **Setup method:** The setup method is called before each test case is run. It allows you to set up any necessary preconditions or state required for the test case to execute successfully. This method helps in reducing duplication and ensuring that tests are executed in isolation.
 
-** Teardown method:** The teardown method is called after each test case is run. It allows you to clean up any resources or state that were created during the test case execution. This method is helpful in releasing memory, deallocating objects, or restoring the system to its original state after the test. 
+**Teardown method:** The teardown method is called after each test case is run. It allows you to clean up any resources or state that were created during the test case execution. This method is helpful in releasing memory, deallocating objects, or restoring the system to its original state after the test. 
 
 ## 3. How to unit test async functions?
 - Use XCTest asynchronous testing methods.
@@ -155,29 +155,47 @@ Instead of using a strong reference, use weak or unowned references when creatin
 
 ## 19. Explain SOLID.
 **Single Responsibility Principle (SRP):** A class should have only one reason to change, meaning it should have a single responsibility or purpose.
+
 **Open-Closed Principle (OCP):** Software entities (classes, modules, functions) should be open for extension but closed for modification. This means that you should be able to add new functionality without modifying existing code.
+
 **Liskov Substitution Principle (LSP):** Subtypes must be substitutable for their base types, without breaking the behavior of the program. In other words, objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program.
+
 **Interface Segregation Principle (ISP):** Clients should not be forced to depend on interfaces they do not use. This principle emphasizes the creation of smaller, more focused interfaces instead of large, general-purpose interfaces.
+
 **Dependency Inversion Principle (DIP):** High-level modules/classes should not depend on low-level modules/classes directly. Both should depend on abstractions. This principle promotes loose coupling and allows for easier changes and modifications.
 
 ## 20. Explain different security you do in iOS.
 **Secure Data Storage:** I use encryption techniques (such as using the Keychain Services API) to securely store sensitive user data, such as passwords or authentication tokens, on the device. This prevents unauthorized access to the data even if the device is compromised.
+
 **Network Communication:** I employ secure protocols (e.g., HTTPS) to encrypt network communication between the app and server, preventing eavesdropping and data tampering. I also validate server certificates to avoid man-in-the-middle attacks.
+
 **User Authentication:** I implement secure authentication mechanisms, such as biometric authentication (Touch ID, Face ID) or secure password hashing, to protect user accounts and prevent unauthorized access.
+
 **App Sandbox:** I leverage iOS's sandboxing architecture, which enforces strict boundaries between the app and the rest of the system. This prevents unauthorized access to system resources and ensures data isolation between apps.
+
 **Code Obfuscation:** I apply techniques like code obfuscation to make the app's binary harder to reverse engineer. By making the code more difficult to understand, it becomes less susceptible to tampering or exploitation.
+
 **Regular Updates:** I keep up with the latest iOS updates and security patches to ensure that the app remains secure against known vulnerabilities. Regularly updating the app also helps protect against emerging threats.
+
 **Input Validation:** I implement input validation and sanitization techniques to prevent common security vulnerabilities, such as cross-site scripting (XSS) or SQL injection attacks. This ensures that user input is properly validated and sanitized before being processed.
+
 **Secure Key Management:** I follow best practices for managing cryptographic keys, including using the iOS Keychain to securely store encryption keys and avoid hardcoding them within the app's code.
+
 **App Transport Security (ATS):** I configure ATS to enforce secure communication by default, allowing only encrypted connections to trusted servers and preventing potential security risks associated with insecure network connections.
+
 **Penetration Testing:** I conduct regular penetration testing to identify and address potential vulnerabilities in the app. This involves simulated attacks and security assessments to uncover any weaknesses that need to be addressed.
 
 ## 21. iOS app life cycle methods.
 **application(_:didFinishLaunchingWithOptions:)_:**  Called when the app finishes launching. Use it to initialize app-wide resources.
+
 **applicationWillResignActive(_:)_:** Called when the app is about to become inactive, such as when a phone call or message arrives. Use it to pause ongoing tasks or save app state.
+
 **applicationDidEnterBackground(_:)_:** Called when the app enters the background. Use it to release shared resources, save user data, and invalidate timers.
+
 **applicationWillEnterForeground(_:)_:** Called when the app is about to enter the foreground. Use it to undo changes made in the applicationDidEnterBackground method.
+
 **applicationDidBecomeActive(_:)_:** Called when the app becomes active. Use it to restart tasks that were paused or not executed in the background.
+
 **applicationWillTerminate(_:)_:** Called when the app is about to terminate. Use it to save user data, state information, and perform any necessary cleanup tasks.
 
 

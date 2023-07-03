@@ -2,13 +2,13 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "container:"
+      location = "group:Custom-Exception"
       name = "Custom-Exception">
       <FileRef
-         location = "group:Custom-Exception.playground">
+         location = "group:README.md">
       </FileRef>
       <FileRef
-         location = "group:README.md">
+         location = "group:Custom-Exception.playground">
       </FileRef>
    </Group>
    <FileRef
