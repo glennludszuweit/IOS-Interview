@@ -6,31 +6,65 @@
 //
 
 import XCTest
+import Combine
 @testable import Weather
 
-final class WeatherTests: XCTestCase {
-
+final class WeatherViewModelTests: XCTestCase {
+    
+    var viewModel: WeatherViewModel!
+    var networkManager: TestNetworkManager!
+    var errorManager: TestErrorManager!
+    var cancellables: Set<AnyCancellable> = []
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        networkManager = TestNetworkManager()
+        errorManager = TestErrorManager()
+        viewModel = WeatherViewModel(networkManager: networkManager, errorManager: errorManager)
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        cancellables.forEach { $0.cancel() }
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testFetchWeatherForecast_Success() throws {
+        // Given
+        let lat = 28.3644
+        let lon = 15.8352
+        let expectation = XCTestExpectation(description: "Weather forecast fetched successfully")
+        
+        // When
+        viewModel.fetchWeatherForecast(lat: lat, long: lon)
+        
+        // Then
+        viewModel.$weatherForecast
+            .sink { weather in
+                XCTAssertNotNil(weather)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testFetchWeatherForecast_Failure() throws {
+        // Given
+        let lat = 28.3644
+        let lon = 15.8352
+        networkManager.shouldFail = true // Set this in your TestNetworkManager
+        
+        let expectation = XCTestExpectation(description: "Weather forecast fetch failed")
+        
+        // When
+        viewModel.fetchWeatherForecast(lat: lat, long: lon)
+        
+        // Then
+        viewModel.$errorMessage
+            .sink { errorMessage in
+                XCTAssertNotNil(errorMessage)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5)
     }
-
 }
