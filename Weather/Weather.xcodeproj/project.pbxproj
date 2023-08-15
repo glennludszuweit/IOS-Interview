@@ -22,6 +22,7 @@
 		D4C637342A8B9F4A005A3BC9 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C637332A8B9F4A005A3BC9 /* ErrorManager.swift */; };
 		D4C637382A8BA85E005A3BC9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C637372A8BA85E005A3BC9 /* Weather.swift */; };
 		D4C6373A2A8BACD4005A3BC9 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4C637392A8BACD4005A3BC9 /* API.plist */; };
+		D4C6373C2A8BC861005A3BC9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C6373B2A8BC861005A3BC9 /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		D4C637332A8B9F4A005A3BC9 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		D4C637372A8BA85E005A3BC9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		D4C637392A8BACD4005A3BC9 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
+		D4C6373B2A8BC861005A3BC9 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				D4C636EC2A8B8B28005A3BC9 /* HomeView.swift */,
+				D4C6373B2A8BC861005A3BC9 /* WeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				D4C637342A8B9F4A005A3BC9 /* ErrorManager.swift in Sources */,
 				D4C6372C2A8B9121005A3BC9 /* LocationViewModel.swift in Sources */,
 				D4C637382A8BA85E005A3BC9 /* Weather.swift in Sources */,
+				D4C6373C2A8BC861005A3BC9 /* WeatherView.swift in Sources */,
 				D4C6372E2A8B9242005A3BC9 /* Location.swift in Sources */,
 				D4C636ED2A8B8B28005A3BC9 /* HomeView.swift in Sources */,
 				D4C637322A8B9F18005A3BC9 /* APIServices.swift in Sources */,

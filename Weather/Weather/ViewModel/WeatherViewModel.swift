@@ -30,15 +30,18 @@ class WeatherViewModel: ObservableObject {
         
         self.networkManager.getAll(apiUrl: url, type: Weather.self)
             .receive(on: DispatchQueue.main)
-            .sink { completion in
+            .sink { [weak self] completion in
                 switch completion {
                 case .finished:
+                    print("success")
                     break
                 case .failure(let error):
-                    self.errorMessage = self.errorManager.handleError(error)
+                    print("failed")
+                    self?.errorMessage = self?.errorManager.handleError(error)
                 }
-            } receiveValue: { data in
-                self.weatherForecast = data
+            } receiveValue: { [weak self] data in
+                print(data)
+                self?.weatherForecast = data
             }
             .store(in: &cancellable)
     }

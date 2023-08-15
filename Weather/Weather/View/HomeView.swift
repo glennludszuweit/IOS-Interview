@@ -15,28 +15,48 @@ struct HomeView: View {
     @State private var location: Location?
     
     var body: some View {
-        VStack {
-            if let weatherForecast = weatherViewModel.weatherForecast {
-                Text("\(weatherForecast.location?.lat ?? 0)")
-            } else if let errorMessage = weatherViewModel.errorMessage {
-                Text("Error: \(errorMessage)")
-            } else {
-                ProgressView("Fetching Weather")
-            }
-            
-            Button("Fetch Weather") {
-                if (locationViewModel.currentLocation != nil) {
-                    location = Location(name: "Me", coordinate: locationViewModel.currentLocation!.coordinate)
+        NavigationView {
+            VStack {
+                if let weatherForecast = weatherViewModel.weatherForecast {
+                    VStack {
+                        Text("Average Temperature:")
+                            .fontWeight(.bold)
+                        Text("\((weatherForecast.timelines.daily[0].values.temperatureAvg))")
+                            .font(.title)
+                            .padding(25)
+                    }
+                    Spacer()
+                    NavigationLink {
+                        WeatherView()
+                    } label: {
+                        Button("This weeks Forecast") {
+                        }.buttonStyle(.borderedProminent)
+                            .tint(.orange)
+                            .padding(20)
+                    }
+                } else if let errorMessage = weatherViewModel.errorMessage {
+                    Text("Error: \(errorMessage)")
                 } else {
-                    location = Location(name: "London", coordinate: CLLocation(latitude: 28.3644, longitude: 15.8352).coordinate)
+                    ProgressView("Fetching Weather")
                 }
                 
-                guard let location = location else { return }
+                Spacer()
                 
-                weatherViewModel.fetchWeatherForecast(lat: location.coordinate.latitude, long: location.coordinate.longitude)
+                Button("Fetch Weather") {
+                    if (locationViewModel.currentLocation != nil) {
+                        location = Location(name: "Me", coordinate: locationViewModel.currentLocation!.coordinate)
+                    } else {
+                        location = Location(name: "London", coordinate: CLLocation(latitude: 28.3644, longitude: 15.8352).coordinate)
+                    }
+                    
+                    guard let location = location else { return }
+                    
+                    weatherViewModel.fetchWeatherForecast(lat: location.coordinate.latitude, long: location.coordinate.longitude)
+                }.buttonStyle(.borderedProminent)
+                    .padding(20)
             }
+            .padding()
         }
-        .padding()
     }
 }
 
