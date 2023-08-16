@@ -27,13 +27,12 @@ struct HomeView: View {
                     }
                     Spacer()
                     NavigationLink {
-                        WeatherView()
+                        WeatherView(weekWeatherForecast: weatherViewModel.weatherForecast?.timelines.daily ?? [])
                     } label: {
-                        Button("This weeks Forecast") {
-                        }.buttonStyle(.borderedProminent)
-                            .tint(.orange)
-                            .padding(20)
-                    }
+                        Text("This weeks Forecast")
+                    }.buttonStyle(.borderedProminent)
+                        .tint(.orange)
+                        .padding(20)
                 } else if let errorMessage = weatherViewModel.errorMessage {
                     Text("Error: \(errorMessage)")
                 } else {

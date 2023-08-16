@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @StateObject var weatherViewModel = WeatherViewModel(networkManager: NetworkManager(), errorManager: ErrorManager())
+    var weekWeatherForecast: [Daily] = []
     
     var body: some View {
-        List((weatherViewModel.weatherForecast?.timelines.daily)!, id: \.time) { weather in
-            HStack {
-                Text(weather.time)
-                Text(String(weather.values.temperatureAvg))
+        if weekWeatherForecast.count > 0 {
+            VStack {
+                List(weekWeatherForecast, id: \.time) { weather in
+                    HStack {
+                        Text(weather.time)
+                        Text(String(weather.values.temperatureAvg))
+                    }
+                }
             }
+            Spacer()
+        } else {
+            ProgressView("Fetching Weather")
         }
     }
 }
