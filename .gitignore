@@ -7,7 +7,7 @@ Objective-C.gitignore & Swift.gitignore
 xcuserdata/
 
 ## Plist files
-*.plist
+## *.plist
 
 ## compatibility with Xcode 8 and earlier (ignoring not required 
 starting 
